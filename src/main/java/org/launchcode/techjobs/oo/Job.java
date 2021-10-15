@@ -25,9 +25,11 @@ public class Job {
         this.location = location;
         this.positionType = positionType;
         this.coreCompetency = coreCompetency;
+
+        if (name.equals("")) {
+            setName("Data not available");
+        }
     }
-
-
 
     @Override
     public boolean equals(Object o) {
@@ -39,14 +41,14 @@ public class Job {
 
     @Override
     public String toString() {
-        return "\n" +
-                "ID: " + id + "\n" +
-                "Name: " + name + "\n" +
-                "Employer: " + employer + "\n" +
-                "Location: " + location + "\n" +
-                "Position Type: " + positionType + "\n" +
-                "Core Competency: " + coreCompetency +
-                "\n";
+            return "\n" +
+                    "ID: " + id + "\n" +
+                    "Name: " + name + "\n" +
+                    "Employer: " + employer + "\n" +
+                    "Location: " + location + "\n" +
+                    "Position Type: " + positionType + "\n" +
+                    "Core Competency: " + coreCompetency +
+                    "\n";
     }
 
     @Override
