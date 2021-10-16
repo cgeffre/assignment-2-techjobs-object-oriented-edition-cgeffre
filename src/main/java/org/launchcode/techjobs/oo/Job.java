@@ -61,19 +61,18 @@ public class Job {
             }
         }
 
-        if (fieldsToString.get(0).equals(noData) && fieldsToString.get(1).equals(noData)
-            && fieldsToString.get(2).equals(noData) && fieldsToString.get(3).equals(noData)
-            && fieldsToString.get(4).equals(noData)) {
-            return "\nOOPS! This job does not seem to exist.\n";
-        } else {
-            return
-                "\nID: " + id +
-                "\nName: " + fieldsToString.get(0) +
-                "\nEmployer: " + fieldsToString.get(1) +
-                "\nLocation: " + fieldsToString.get(2) +
-                "\nPosition Type: " + fieldsToString.get(3) +
-                "\nCore Competency: " + fieldsToString.get(4) + "\n";
-        }
+        for (String field : fieldsToString) {
+            if (!field.equals(noData)) {
+                return
+                        "\nID: " + id +
+                                "\nName: " + fieldsToString.get(0) +
+                                "\nEmployer: " + fieldsToString.get(1) +
+                                "\nLocation: " + fieldsToString.get(2) +
+                                "\nPosition Type: " + fieldsToString.get(3) +
+                                "\nCore Competency: " + fieldsToString.get(4) + "\n";
+                }
+            }
+        return "OOPS! This job does not seem to exist.";
     }
 
     @Override
