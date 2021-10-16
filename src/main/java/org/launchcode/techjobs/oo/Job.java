@@ -1,6 +1,7 @@
 package org.launchcode.techjobs.oo;
 
 import java.util.Objects;
+import java.util.ArrayList;
 
 public class Job {
 
@@ -25,10 +26,6 @@ public class Job {
         this.location = location;
         this.positionType = positionType;
         this.coreCompetency = coreCompetency;
-
-        if (name.equals("")) {
-            setName("Data not available");
-        }
     }
 
     @Override
@@ -41,14 +38,42 @@ public class Job {
 
     @Override
     public String toString() {
-            return "\n" +
-                    "ID: " + id + "\n" +
-                    "Name: " + name + "\n" +
-                    "Employer: " + employer + "\n" +
-                    "Location: " + location + "\n" +
-                    "Position Type: " + positionType + "\n" +
-                    "Core Competency: " + coreCompetency +
-                    "\n";
+        String stringName = name;
+        String stringEmployer = employer.getValue();
+        String stringLocation = location.getValue();
+        String stringPositionType = positionType.getValue();
+        String stringCoreCompetency = coreCompetency.getValue();
+        String noData = "Data not available";
+
+        ArrayList<String> fieldsToString = new ArrayList<>() {
+            {
+                add(stringName);
+                add(stringEmployer);
+                add(stringLocation);
+                add(stringPositionType);
+                add(stringCoreCompetency);
+            }
+        };
+
+        for (int i = 0; i < fieldsToString.size(); i++) {
+            if (fieldsToString.get(i).equals("")) {
+                fieldsToString.set(i, noData);
+            }
+        }
+
+        if (fieldsToString.get(0).equals(noData) && fieldsToString.get(1).equals(noData)
+            && fieldsToString.get(2).equals(noData) && fieldsToString.get(3).equals(noData)
+            && fieldsToString.get(4).equals(noData)) {
+            return "\nOOPS! This job does not seem to exist.\n";
+        } else {
+            return
+                "\nID: " + id +
+                "\nName: " + fieldsToString.get(0) +
+                "\nEmployer: " + fieldsToString.get(1) +
+                "\nLocation: " + fieldsToString.get(2) +
+                "\nPosition Type: " + fieldsToString.get(3) +
+                "\nCore Competency: " + fieldsToString.get(4) + "\n";
+        }
     }
 
     @Override
